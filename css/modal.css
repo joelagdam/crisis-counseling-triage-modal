@@ -16,6 +16,7 @@
     opacity: 0;
     visibility: hidden;
     transition: opacity var(--transition-base), visibility var(--transition-base);
+    pointer-events: none;
 }
 
 .modal-overlay[hidden] {
@@ -25,6 +26,7 @@
 .modal-overlay.is-open {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 /* Modal Container */

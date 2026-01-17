@@ -156,14 +156,18 @@ class TriageFlow {
     }
     
     init() {
+        console.log('TriageFlow initialized');
+        
         // Listen for modal events
         document.addEventListener('modal:opened', () => {
+            console.log('Modal opened event received');
             this.resetFlow();
             this.renderCurrentStep();
         });
         
         // Listen for modal closed
         document.addEventListener('modal:closed', () => {
+            console.log('Modal closed event received');
             this.resetFlow();
         });
     }
@@ -182,6 +186,7 @@ class TriageFlow {
     }
     
     renderCurrentStep() {
+        console.log('Rendering current step:', this.state.currentStep);
         if (this.state.currentStep === 'results') {
             this.renderResults();
         } else {
@@ -290,18 +295,39 @@ class TriageFlow {
     getResults() {
         const { resourceType, concern, contactMethod } = this.state.selections;
         
+        // Debug logging
+        console.log('Getting results for:', { resourceType, concern, contactMethod });
+        
         if (resourceType === 'national') {
-            return [this.resources.national[contactMethod]];
+            const result = this.resources.national[contactMethod];
+            console.log('National result:', result);
+            return [result];
         } else {
-            return [this.resources.local[concern][contactMethod]];
+            // Ensure concern exists in local resources
+            if (this.resources.local[concern] && this.resources.local[concern][contactMethod]) {
+                const result = this.resources.local[concern][contactMethod];
+                console.log('Local result:', result);
+                return [result];
+            } else {
+                // Fallback to general support if specific concern not found
+                const result = this.resources.local.general[contactMethod];
+                console.log('Fallback result:', result);
+                return [result];
+            }
         }
     }
     
     bindQuestionEvents() {
         // Option button clicks
         const optionButtons = this.dynamicContent.querySelectorAll('.option-button');
-        optionButtons.forEach(button => {
-            button.addEventListener('click', () => {
+        console.log('Found option buttons:', optionButtons.length);
+        
+        optionButtons.forEach((button, index) => {
+            console.log(`Binding button ${index}:`, button.dataset.value);
+            button.addEventListener('click', (e) => {
+                console.log('Button clicked:', button.dataset.value);
+                e.preventDefault();
+                e.stopPropagation();
                 const value = button.dataset.value;
                 this.handleSelection(value);
             });
@@ -309,8 +335,14 @@ class TriageFlow {
         
         // Navigation buttons
         const navButtons = this.dynamicContent.querySelectorAll('.nav-button');
-        navButtons.forEach(button => {
-            button.addEventListener('click', () => {
+        console.log('Found nav buttons:', navButtons.length);
+        
+        navButtons.forEach((button, index) => {
+            console.log(`Binding nav button ${index}:`, button.dataset.action);
+            button.addEventListener('click', (e) => {
+                console.log('Nav button clicked:', button.dataset.action);
+                e.preventDefault();
+                e.stopPropagation();
                 const action = button.dataset.action;
                 this.handleNavigation(action);
             });
