@@ -64,14 +64,38 @@ Once pushed, your repository will be available at:
 - **Repository**: `https://github.com/joelagdam/crisis-counseling-triage-modal`
 - **Live Demo** (if GitHub Pages enabled): `https://joelagdam.github.io/crisis-counseling-triage-modal/`
 
-## 📝 Next Steps
+## Next Steps
 
-1. **Customize Resources**: Update the phone numbers and resource information in `js/triage-flow.js`
-2. **Adjust Styling**: Modify colors and layout in the CSS files
+1. **Modify Phone Numbers**: Update crisis support numbers in `js/triage-flow.js` at **lines 30-89** in the `this.resources` object:
+
+```javascript
+// File: js/triage-flow.js (lines 30-89)
+this.resources = {
+    national: {
+        phone: {
+            number: "988",  // ← CHANGE THIS LINE
+            label: "Suicide & Crisis Lifeline",
+            hours: "24/7"
+        }
+    },
+    local: {
+        burnout: {
+            phone: {
+                number: "1-800-273-8255",  // ← CHANGE THIS LINE
+                label: "Workplace Burnout Hotline",
+                hours: "Mon-Fri 9AM-8PM"
+            }
+        }
+        // ... more resources to modify
+    }
+};
+```
+
+2. **Adjust Styling**: Modify colors and layout in CSS files
 3. **Add Analytics**: Add Google Analytics or other tracking if needed
 4. **Custom Domain**: Set up a custom domain through GitHub Pages settings
 
-## 🤝 Contributing
+## Contributing
 
 If you want to allow contributions:
 
