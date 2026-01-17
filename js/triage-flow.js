@@ -156,18 +156,14 @@ class TriageFlow {
     }
     
     init() {
-        console.log('TriageFlow initialized');
-        
         // Listen for modal events
         document.addEventListener('modal:opened', () => {
-            console.log('Modal opened event received');
             this.resetFlow();
             this.renderCurrentStep();
         });
         
         // Listen for modal closed
         document.addEventListener('modal:closed', () => {
-            console.log('Modal closed event received');
             this.resetFlow();
         });
     }
@@ -186,7 +182,6 @@ class TriageFlow {
     }
     
     renderCurrentStep() {
-        console.log('Rendering current step:', this.state.currentStep);
         if (this.state.currentStep === 'results') {
             this.renderResults();
         } else {
@@ -222,7 +217,11 @@ class TriageFlow {
         `;
         
         this.dynamicContent.innerHTML = html;
-        this.bindQuestionEvents();
+        
+        // Use setTimeout to ensure DOM is updated before binding events
+        setTimeout(() => {
+            this.bindQuestionEvents();
+        }, 0);
     }
     
     renderNavigation() {
@@ -267,7 +266,11 @@ class TriageFlow {
         `;
         
         this.dynamicContent.innerHTML = html;
-        this.bindResultsEvents();
+        
+        // Use setTimeout to ensure DOM is updated before binding events
+        setTimeout(() => {
+            this.bindResultsEvents();
+        }, 0);
     }
     
     renderResource(resource) {
@@ -295,23 +298,17 @@ class TriageFlow {
     getResults() {
         const { resourceType, concern, contactMethod } = this.state.selections;
         
-        // Debug logging
-        console.log('Getting results for:', { resourceType, concern, contactMethod });
-        
         if (resourceType === 'national') {
             const result = this.resources.national[contactMethod];
-            console.log('National result:', result);
             return [result];
         } else {
             // Ensure concern exists in local resources
             if (this.resources.local[concern] && this.resources.local[concern][contactMethod]) {
                 const result = this.resources.local[concern][contactMethod];
-                console.log('Local result:', result);
                 return [result];
             } else {
                 // Fallback to general support if specific concern not found
                 const result = this.resources.local.general[contactMethod];
-                console.log('Fallback result:', result);
                 return [result];
             }
         }
@@ -320,12 +317,9 @@ class TriageFlow {
     bindQuestionEvents() {
         // Option button clicks
         const optionButtons = this.dynamicContent.querySelectorAll('.option-button');
-        console.log('Found option buttons:', optionButtons.length);
         
         optionButtons.forEach((button, index) => {
-            console.log(`Binding button ${index}:`, button.dataset.value);
             button.addEventListener('click', (e) => {
-                console.log('Button clicked:', button.dataset.value);
                 e.preventDefault();
                 e.stopPropagation();
                 const value = button.dataset.value;
@@ -335,12 +329,9 @@ class TriageFlow {
         
         // Navigation buttons
         const navButtons = this.dynamicContent.querySelectorAll('.nav-button');
-        console.log('Found nav buttons:', navButtons.length);
         
         navButtons.forEach((button, index) => {
-            console.log(`Binding nav button ${index}:`, button.dataset.action);
             button.addEventListener('click', (e) => {
-                console.log('Nav button clicked:', button.dataset.action);
                 e.preventDefault();
                 e.stopPropagation();
                 const action = button.dataset.action;
@@ -382,6 +373,8 @@ class TriageFlow {
                 if (value === 'national') {
                     // Skip to results for national resources
                     this.state.selections.concern = 'national';
+                    // For national, default to phone and show both options
+                    this.state.selections.contactMethod = 'phone';
                     this.state.currentStep = 'results';
                 } else {
                     this.state.currentStep = 2;
@@ -407,18 +400,17 @@ class TriageFlow {
                     const previousState = this.state.history.pop();
                     this.state.currentStep = previousState.step;
                     this.state.selections = previousState.selections;
-                    this.renderCurrentStep();
                 } else if (this.state.currentStep === 'results') {
-                    // Go back to step 3 from results
+                    // If on results and no history, go back to step 3
                     this.state.currentStep = 3;
-                    this.renderCurrentStep();
                 }
                 break;
             case 'restart':
                 this.resetFlow();
-                this.renderCurrentStep();
                 break;
         }
+        
+        this.renderCurrentStep();
     }
     
     updateProgress() {
