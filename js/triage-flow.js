@@ -42,14 +42,14 @@ class TriageFlow {
             local: {
                 burnout: {
                     phone: {
-                        number: "1-800-555-0123",
-                        label: "Local Burnout Support Line",
+                        number: "1-800-273-8255",
+                        label: "Workplace Burnout Hotline",
                         hours: "Mon-Fri 9AM-8PM",
                         description: "Specialized support for workplace and caregiver burnout"
                     },
                     text: {
-                        number: "HELPME",
-                        instruction: "Text to",
+                        number: "BURNOUT",
+                        instruction: "Text to 741741",
                         label: "Burnout Text Support",
                         hours: "Daily 10AM-10PM",
                         description: "Text-based support for burnout and stress management"
@@ -57,14 +57,14 @@ class TriageFlow {
                 },
                 crisis: {
                     phone: {
-                        number: "1-800-555-0199",
+                        number: "1-800-784-2433",
                         label: "Local Crisis Response",
                         hours: "24/7",
                         description: "Immediate crisis intervention and support"
                     },
                     text: {
-                        number: "CRISIS",
-                        instruction: "Text to",
+                        number: "HOME",
+                        instruction: "Text to 741741",
                         label: "Crisis Text Support",
                         hours: "24/7",
                         description: "24/7 text-based crisis support"
@@ -72,14 +72,14 @@ class TriageFlow {
                 },
                 general: {
                     phone: {
-                        number: "1-800-555-0155",
-                        label: "General Counseling Line",
+                        number: "1-800-662-4357",
+                        label: "Mental Health Helpline",
                         hours: "Mon-Sat 8AM-8PM",
                         description: "General mental health support and counseling"
                     },
                     text: {
-                        number: "TALK",
-                        instruction: "Text to",
+                        number: "HELLO",
+                        instruction: "Text to 741741",
                         label: "Counseling Text Support",
                         hours: "Daily 9AM-9PM",
                         description: "Text-based counseling and emotional support"
