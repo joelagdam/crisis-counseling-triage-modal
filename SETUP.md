@@ -24,8 +24,8 @@ Follow these steps to create your public GitHub repository:
 After creating the empty repository on GitHub, run these commands:
 
 ```bash
-# Add the remote repository (replace YOUR_USERNAME with your GitHub username)
-git remote add origin https://github.com/YOUR_USERNAME/crisis-counseling-triage-modal.git
+# Add to remote repository
+git remote add origin https://github.com/joelagdam/crisis-counseling-triage-modal.git
 
 # Push to GitHub
 git branch -M main
@@ -43,7 +43,7 @@ git push -u origin main
    - **Folder**: / (root)
 5. Click "Save"
 
-Your site will be live at: `https://YOUR_USERNAME.github.io/crisis-counseling-triage-modal/`
+Your site will be live at: `https://joelagdam.github.io/crisis-counseling-triage-modal/`
 
 ## 📋 Repository Checklist
 
@@ -61,8 +61,8 @@ Your repository should include:
 ## 🔗 Repository URL Structure
 
 Once pushed, your repository will be available at:
-- **Repository**: `https://github.com/YOUR_USERNAME/crisis-counseling-triage-modal`
-- **Live Demo** (if GitHub Pages enabled): `https://YOUR_USERNAME.github.io/crisis-counseling-triage-modal/`
+- **Repository**: `https://github.com/joelagdam/crisis-counseling-triage-modal`
+- **Live Demo** (if GitHub Pages enabled): `https://joelagdam.github.io/crisis-counseling-triage-modal/`
 
 ## 📝 Next Steps
 

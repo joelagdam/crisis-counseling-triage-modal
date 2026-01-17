@@ -4,7 +4,7 @@ A standalone, accessible modal component that enables users to find relevant cri
 
 ## 🚀 **Live Demo
 
-**View the live demo**: [https://pivotpoint-counseling.github.io/crisis-counseling-triage-modal/](https://pivotpoint-counseling.github.io/crisis-counseling-triage-modal/)
+**View the live demo**: [https://joelagdam.github.io/crisis-counseling-triage-modal/](https://joelagdam.github.io/crisis-counseling-triage-modal/)
 
 ## ⚡ Quick Start
 
@@ -12,7 +12,7 @@ A standalone, accessible modal component that enables users to find relevant cri
 
 ```bash
 # Clone the repository
-git clone https://github.com/pivotpoint-counseling/crisis-counseling-triage-modal.git
+git clone https://github.com/joelagdam/crisis-counseling-triage-modal.git
 
 # Navigate to the project directory
 cd crisis-counseling-triage-modal
@@ -28,7 +28,7 @@ npx serve .
 
 ### Option 2: Direct Download
 
-1. [Download ZIP](https://github.com/pivotpoint-counseling/crisis-counseling-triage-modal/archive/refs/heads/main.zip)
+1. [Download ZIP](https://github.com/joelagdam/crisis-counseling-triage-modal/archive/refs/heads/main.zip)
 2. Extract the files
 3. Open `index.html` in your web browser
 
