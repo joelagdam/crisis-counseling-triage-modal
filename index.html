@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Support - The Pivot Point Counseling Collective</title>
+    <meta name="description" content="Get immediate crisis support and counseling resources through our interactive triage system.">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+    <!-- Main Content -->
+    <header class="main-header">
+        <div class="container">
+            <h1>The Pivot Point Counseling Collective</h1>
+            <p>Professional counseling services when you need support most</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <section class="hero">
+                <h2>Immediate Support Available</h2>
+                <p>If you're experiencing acute stress, burnout, or crisis, help is just a click away. Our triage system connects you with the right resources quickly and confidentially.</p>
+                <p>Click the "I Need Support Now" button in the bottom-right corner to get started.</p>
+            </section>
+
+            <section class="resources-static">
+                <h3>Additional Resources</h3>
+                <div class="resource-grid">
+                    <div class="resource-card">
+                        <h4>Emergency Services</h4>
+                        <p>For immediate life-threatening emergencies, call 911.</p>
+                    </div>
+                    <div class="resource-card">
+                        <h4>Regular Appointments</h4>
+                        <p>Schedule a counseling session for non-urgent support.</p>
+                    </div>
+                    <div class="resource-card">
+                        <h4>Self-Help Tools</h4>
+                        <p>Browse our collection of coping strategies and exercises.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Support Trigger Button -->
+    <button 
+        id="support-trigger" 
+        class="support-trigger"
+        aria-label="Open support modal"
+        type="button">
+        <span class="trigger-icon">🆘</span>
+        <span class="trigger-text">I Need Support Now</span>
+    </button>
+
+    <!-- Modal Container -->
+    <div id="support-modal" class="modal-overlay" hidden>
+        <div class="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <!-- Modal Header -->
+            <header class="modal-header">
+                <h2 id="modal-title" class="modal-title">Get Support Now</h2>
+                <button 
+                    id="modal-close" 
+                    class="modal-close"
+                    aria-label="Close support modal"
+                    type="button">
+                    ✕
+                </button>
+            </header>
+
+            <!-- Modal Content -->
+            <main class="modal-content">
+                <div id="modal-description" class="sr-only">
+                    Interactive triage system to find appropriate crisis support resources
+                </div>
+                
+                <!-- Progress Indicator -->
+                <nav aria-label="Triage steps" class="progress-nav">
+                    <div class="progress-indicator">
+                        <span class="progress-text">Step <span id="current-step">1</span> of <span id="total-steps">3</span></span>
+                        <div class="progress-bar">
+                            <div id="progress-fill" class="progress-fill" style="width: 33.33%"></div>
+                        </div>
+                    </div>
+                </nav>
+
+                <!-- Dynamic Content Area -->
+                <div id="dynamic-content" class="dynamic-content" aria-live="polite">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+            </main>
+
+            <!-- Modal Footer -->
+            <footer class="modal-footer">
+                <div class="footer-text">
+                    <p>Confidential and free support available 24/7</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/modal-core.js"></script>
+    <script src="js/triage-flow.js"></script>
+</body>
+</html>
